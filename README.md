@@ -10,7 +10,6 @@ currency-converter/
 │   │   ├── currency.service.spec.ts
 │   │   ├── dto/
 │   │   │   ├── convert-currency.dto.ts
-│   │   │   ├── convert-currency.spec.dto.ts
 │   ├── common/
 │   │   ├── filters/
 │   │   │   ├── http-exception.filter.ts
