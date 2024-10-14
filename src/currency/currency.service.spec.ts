@@ -3,7 +3,7 @@ import { CurrencyService } from './currency.service';
 import { HttpService } from '@nestjs/axios';
 import { RedisService } from '@liaoliaots/nestjs-redis';
 import { of } from 'rxjs';
-import { Redis } from 'ioredis'; // For Redis client typing
+import { Redis } from 'ioredis';
 
 describe('CurrencyService', () => {
   let currencyService: CurrencyService;
@@ -50,14 +50,17 @@ describe('CurrencyService', () => {
       { currencyCodeA: 978, currencyCodeB: 840, rateBuy: 1.1, rateSell: 1.089 },
     ];
 
-    jest.spyOn(httpService, 'get').mockReturnValue(of({ data: mockApiResponse } as any));
+    jest
+      .spyOn(httpService, 'get')
+      .mockReturnValue(of({ data: mockApiResponse } as any));
 
     const result = await currencyService.convertCurrency(978, 840, 100);
     expect(result).toEqual({ convertedAmount: 108.89999999999999 });
   });
 
   it('should return a cached result if available in Redis', async () => {
-    const mockCachedResponse = '[{"currencyCodeA":978,"currencyCodeB":840,"rateBuy":1.1,"rateSell":1.089}]';
+    const mockCachedResponse =
+      '[{"currencyCodeA":978,"currencyCodeB":840,"rateBuy":1.1,"rateSell":1.089}]';
 
     jest.spyOn(redisClient, 'get').mockResolvedValue(mockCachedResponse);
 
@@ -70,7 +73,9 @@ describe('CurrencyService', () => {
       { currencyCodeA: 978, currencyCodeB: 840, rateBuy: 1.1, rateSell: 1.089 },
     ];
 
-    jest.spyOn(httpService, 'get').mockReturnValue(of({ data: mockApiResponse } as any));
+    jest
+      .spyOn(httpService, 'get')
+      .mockReturnValue(of({ data: mockApiResponse } as any));
 
     jest.spyOn(redisClient, 'set').mockResolvedValue('OK');
 

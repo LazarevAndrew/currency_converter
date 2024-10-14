@@ -4,7 +4,6 @@ import { CurrencyController } from './currency/currency.controller';
 import { HttpModule } from '@nestjs/axios';
 import { ConfigModule } from '@nestjs/config';
 import { TerminusModule } from '@nestjs/terminus';
-// import { HealthController } from './health/health.controller';
 import { RedisModule } from '@liaoliaots/nestjs-redis';
 
 @Module({
@@ -17,7 +16,7 @@ import { RedisModule } from '@liaoliaots/nestjs-redis';
         password: process.env.REDIS_PASSWORD || undefined,
       },
     }),
-    HttpModule, 
+    HttpModule,
     ConfigModule.forRoot(),
     TerminusModule,
   ],
@@ -25,4 +24,3 @@ import { RedisModule } from '@liaoliaots/nestjs-redis';
   controllers: [CurrencyController],
 })
 export class AppModule {}
-

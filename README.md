@@ -67,14 +67,14 @@ currency-converter/
     ```
     {
     "from": 840,  // Source currency code (e.g., USD)
-    "to": 978,    // Target currency code (e.g., EUR)
+    "to": 980,    // Target currency code (e.g., UAH)
     "amount": 100 // Amount to convert
     }
     ```
     Response Example:
     ```
     {
-    "convertedAmount": 85.5
+    "convertedAmount": 4148.5199999999995
     }
     ```
 

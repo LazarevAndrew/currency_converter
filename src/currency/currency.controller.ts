@@ -1,4 +1,11 @@
-import { Controller, Post, Body, HttpException, HttpStatus, HttpCode } from '@nestjs/common';
+import {
+  Controller,
+  Post,
+  Body,
+  HttpException,
+  HttpStatus,
+  HttpCode,
+} from '@nestjs/common';
 import { CurrencyService } from './currency.service';
 import { ApiTags, ApiOperation, ApiResponse } from '@nestjs/swagger';
 import { ConvertCurrencyDto } from './dto/convert-currency.dto';
@@ -18,10 +25,17 @@ export class CurrencyController {
     const { from, to, amount } = convertCurrencyDto;
 
     if (!from || !to || !amount) {
-      throw new HttpException('Missing required parameters', HttpStatus.BAD_REQUEST);
+      throw new HttpException(
+        'Missing required parameters',
+        HttpStatus.BAD_REQUEST,
+      );
     }
 
-    const convertedAmount = await this.currencyService.convertCurrency(from, to, amount);
+    const convertedAmount = await this.currencyService.convertCurrency(
+      from,
+      to,
+      amount,
+    );
     return convertedAmount;
   }
 }

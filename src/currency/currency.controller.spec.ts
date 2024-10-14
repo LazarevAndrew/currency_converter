@@ -15,7 +15,9 @@ describe('CurrencyController', () => {
         {
           provide: CurrencyService,
           useValue: {
-            convertCurrency: jest.fn().mockResolvedValue({ convertedAmount: 100 }),
+            convertCurrency: jest
+              .fn()
+              .mockResolvedValue({ convertedAmount: 100 }),
           },
         },
       ],
